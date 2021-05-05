@@ -24,7 +24,7 @@ $app->get('/', function () use ($app) {
 
   // Envia a mensagem de resposta
   $app->response()->json([
-    "mensagem" => "Alô, Luan!"
+    "mensagem" => "Alô, LeBron!"
   ]);
 });
 
