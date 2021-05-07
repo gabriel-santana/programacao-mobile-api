@@ -9,7 +9,7 @@ $app->db()->connect("db4free.net:3306", "progmobapiuser", "progmobapipass", "pro
 
 //rota de listagem de todas as ONGs
 
-$app->get('/ongs', function () use ($app) {
+$app->get('/', function () use ($app) {
 
 $limit = $app->request()->get("limit");
   $offset = $app->request()->get("offset");
@@ -45,3 +45,6 @@ $app->get('/search', function () use ($app) {
         "mensagem" => "Alô, LeBron!"
     ]);
 });
+
+
+$app->run();

@@ -9,7 +9,7 @@ $app = new Leaf\App;
 // Inicializa o banco de dados
 // - salvar credenciais no código-fonte: pouco seguro 
 // - melhor abordagem: salvar dados como arquivo de ambientes
-$app->db()->connect("db4free.net:3306", "progmobapiuser", "progmobapipass", "progmobapidb");
+$app->db()->connect("db4free.net:3306", "usuario_049789", "minha_senha_secreta", "db_teste_049789");
 
 
 // ===========================================================================
@@ -24,7 +24,7 @@ $app->get('/', function () use ($app) {
 
   // Envia a mensagem de resposta
   $app->response()->json([
-    "mensagem" => "Alô, LeBron!"
+    "mensagem" => "Alô, mamãe!"
   ]);
 });
 
