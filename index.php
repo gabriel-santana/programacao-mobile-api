@@ -7,15 +7,19 @@ $app = new Leaf\App;
 
 $app->db()->connect("db4free.net:3306", "progmobapiuser", "progmobapipass", "progmobapidb");
 
-
-$app->get('/', function () use ($app) {
-
 //rota de listagem de todas as ONGs
 
+$app->get('/ongs', function () use ($app) {
 
-    $app->response()->json([
-    "mensagem" => "Alô, LeBron!"
-    ]);
+$limit = $app->request()->get("limit");
+  $offset = $app->request()->get("offset");
+
+  $ongs = $app->db()
+    ->query("SELECT * FROM ong LIMIT ? OFFSET ?")
+    ->bind($limit, $offset)
+    ->all();
+
+  $app->response()->json($ongs);
 });
 
 
@@ -28,7 +32,6 @@ $app->get('/ong', function () use ($app) {
         "mensagem" => "Alô, LeBron!"
     ]);
 
-    $app->response()->
 
 });
 
