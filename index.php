@@ -23,17 +23,23 @@ $limit = $app->request()->get("limit");
 });
 
 
-$app->get('/ongs/{id}', function () use ($app) {
+$app->get('/ongs/{id}', function ($id) use ($app) {
 
 //rota de listagem de uma ong especifica
 
+  $ong = $app->db()
+    ->query("SELECT * FROM ong WHERE id = ?")
+    ->bind($id)
+    ->first();
+    
+  $contato = $app->db()
+    ->query("SELECT * FROM contato WHERE id_ong = ?")
+    ->bind($id)
+    ->first();
 
-    $app->response()->json([
-        "mensagem" => "Alô, LeBron!"
-    ]);
+  $app->response()->json([$ong, $contato]);
+  });
 
-
-});
 
       
 $app->get('/ongs/search', function () use ($app) {
