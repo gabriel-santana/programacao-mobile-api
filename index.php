@@ -9,7 +9,7 @@ $app->db()->connect("db4free.net:3306", "progmobapiuser", "progmobapipass", "pro
 
 //rota de listagem de todas as ONGs
 
-$app->get('/', function () use ($app) {
+$app->get('/ongs', function () use ($app) {
 
 $limit = $app->request()->get("limit");
   $offset = $app->request()->get("offset");
@@ -23,7 +23,7 @@ $limit = $app->request()->get("limit");
 });
 
 
-$app->get('/ong', function () use ($app) {
+$app->get('/ongs/{id}', function () use ($app) {
 
 //rota de listagem de uma ong especifica
 
@@ -36,7 +36,7 @@ $app->get('/ong', function () use ($app) {
 });
 
       
-$app->get('/search', function () use ($app) {
+$app->get('/ongs/search', function () use ($app) {
 
 //rota de listagem da pesquisa pelo nome da ong
 
