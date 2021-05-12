@@ -42,14 +42,19 @@ $app->get('/ongs/{id}', function ($id) use ($app) {
 
 
       
-$app->get('/ongs/search', function () use ($app) {
+$app->get('/search', function () use ($app) {
 
 //rota de listagem da pesquisa pelo nome da ong
 
+$name = $app->request()->get("name");
 
-    $app->response()->json([
-        "mensagem" => "Alô, LeBron!"
-    ]);
+
+  $ongs = $app->db()
+    ->query("SELECT * FROM ong WHERE nome LIKE ?")
+    ->bind("%".$name."%")
+    ->all();
+
+  $app->response()->json($ongs);
 });
 
 
